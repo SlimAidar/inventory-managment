@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Home Page - Nearby shops
+{% endblock title %}
+
+{% block content %}
+    
+    <div class="container">
+    	
+    	<h1>Nearby shops</h1>
+
+	    {% if shops %}
+	    	<div class="row">
+	    		{% for shop in shops %}
+			        
+			        <div class="card col-xs-12 col-md-3 p-1" style="width: 18rem;">
+					  <img src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-11/256/shop-icon.png" height="300" class="card-img-top" alt="...">
+					  <div class="card-body">
+					    <h5 class="card-title">{{ shop.name }}</h5>
+					    <p class="card-text"> {{ shop.adresse }} </p>
+					    <a href="#" class="btn btn-primary">Add to favorites</a>
+					  </div>
+					</div>
+
+			    {% endfor %}
+	    	</div>
+		    
+	    {% endif %}
+
+    </div> <!-- end container -->
+
+{% endblock content %}
+
+{% block additional_js %}
+	<script type="text/javascript">
+		navigator.geolocation.getCurrentPosition(function(position) {
+		  do_something(position.coords.latitude, position.coords.longitude);
+		});
+	</script>
+{% endblock additional_js %}
