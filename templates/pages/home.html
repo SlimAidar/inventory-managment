@@ -8,34 +8,90 @@
     
     <div class="container">
     	
-    	<h1>Nearby shops</h1>
+    	<div class="row mt-4">
+    		
+    		<div class="col-xs-12 col-md-6 mt-4">
+    			<div class="card">
+    				<div class="card-body">
+    					<h3>Inventory</h3>
+    					<table class="table" width="100">
+    						<thead>
+    							<tr>
+	    							<th>Item</th>
+	    							<th>Category</th>
+	    							<th>Quantity</th>
+	    						</tr>
+    						</thead>
+    						<tbody>
+    							<tr>
+	    							<td>item x</td>
+	    							<td>category y</td>
+	    							<td>125</td>
+	    						</tr>
+	    						<tr>
+	    							<td>item x</td>
+	    							<td>category y</td>
+	    							<td>125</td>
+	    						</tr>
+	    						<tr>
+	    							<td>item x</td>
+	    							<td>category y</td>
+	    							<td>125</td>
+	    						</tr>
+    						</tbody>
+    					</table>
+    				</div>
+    			</div>
+    		</div>
 
-	    {% if shops %}
-	    	<div class="row">
-	    		{% for shop in shops %}
-			        
-			        <div class="card col-xs-12 col-md-3 p-1" style="width: 18rem;">
-					  <img src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-11/256/shop-icon.png" height="300" class="card-img-top" alt="...">
-					  <div class="card-body">
-					    <h5 class="card-title">{{ shop.name }}</h5>
-					    <p class="card-text"> {{ shop.adresse }} </p>
-					    <a href="#" class="btn btn-primary">Add to favorites</a>
-					  </div>
-					</div>
+    		<div class="col-xs-12 col-md-6 mt-4">
+    			<div class="card">
+    				<div class="card-body">
+	    				<h3>Transactions</h3>
+	    				<table class="table" width="100">
+    						<thead>
+    							<tr>
+	    							<th>Item</th>
+	    							<th>Quantity</th>
+	    							<th>Client</th>
+	    							<th>Time</th>
+	    							<th>Type</th>
+	    						</tr>
+    						</thead>
+    						<tbody>
+    							<tr>
+	    							<td>item x</td>
+	    							<td>125</td>
+	    							<td>Client x</td>
+	    							<td>march, 12th 2019 11:22am</td>
+	    							<td>return</td>
+	    						</tr>
+	    						<tr>
+	    							<td>item x</td>
+	    							<td>125</td>
+	    							<td>Client x</td>
+	    							<td>march, 12th 2019 11:22am</td>
+	    							<td>out</td>
+	    						</tr>
+	    						<tr>
+	    							<td>item x</td>
+	    							<td>125</td>
+	    							<td>Client x</td>
+	    							<td>march, 12th 2019 11:22am</td>
+	    							<td>out</td>
+	    						</tr>
+    						</tbody>
+    					</table>
+	    			</div>
+    			</div>
+    		</div>
 
-			    {% endfor %}
-	    	</div>
+    	</div>
 		    
-	    {% endif %}
-
     </div> <!-- end container -->
 
 {% endblock content %}
 
 {% block additional_js %}
-	<script type="text/javascript">
-		navigator.geolocation.getCurrentPosition(function(position) {
-		  do_something(position.coords.latitude, position.coords.longitude);
-		});
-	</script>
+	
 {% endblock additional_js %}
