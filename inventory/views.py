@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Item, Category, Transaction
 
@@ -17,6 +17,12 @@ class HomePageView(LoginRequiredMixin, TemplateView):
 
 
 class ItemCreateView(CreateView):
+	model = Item
+	fields = '__all__'
+	success_url = '/'
+
+
+class ItemUpdateView(UpdateView):
 	model = Item
 	fields = '__all__'
 	success_url = '/'
