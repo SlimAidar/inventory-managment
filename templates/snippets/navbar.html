@@ -5,15 +5,17 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'create_item' %}">Add product</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'create_category' %}">Add category</a>
-      </li>
+      {% if request.user.is_authenticated %}
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'create_item' %}">Add product</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'create_category' %}">Add category</a>
+        </li>
+      {% endif %}
     </ul>
     <ul class="navbar-nav">
       {% if request.user.is_authenticated %}
@@ -23,9 +25,6 @@
       {% else %}
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="{% url 'account_signup' %}">register</a>
       </li>
       {% endif %}
       

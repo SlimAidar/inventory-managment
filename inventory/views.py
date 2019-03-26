@@ -16,25 +16,25 @@ class HomePageView(LoginRequiredMixin, TemplateView):
 	    return context
 
 
-class ItemCreateView(CreateView):
+class ItemCreateView(LoginRequiredMixin, CreateView):
 	model = Item
 	fields = '__all__'
 	success_url = '/'
 
 
-class ItemUpdateView(UpdateView):
+class ItemUpdateView(LoginRequiredMixin, UpdateView):
 	model = Item
 	fields = '__all__'
 	success_url = '/'
 
 
-class CategoryCreateView(CreateView):
+class CategoryCreateView(LoginRequiredMixin, CreateView):
 	model = Category
 	fields = '__all__'
 	success_url = '/'
 
 
-class TransactionCreateView(CreateView):
+class TransactionCreateView(LoginRequiredMixin, CreateView):
 	model = Transaction
 	fields = ['quantity', 'Client']
 	success_url = '/'
