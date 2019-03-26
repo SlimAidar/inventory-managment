@@ -29,4 +29,8 @@ class Transaction(models.Model):
 	quantity = models.IntegerField()
 	time 	 = models.DateTimeField(auto_now=True)
 	item 	 = models.ForeignKey(Item, on_delete=models.CASCADE,blank=False, null=False)
-	Client 	 = models.ForeignKey(Client, on_delete=models.CASCADE,blank=False, null=False)
+	Client 	 = models.ForeignKey(Client, on_delete=models.CASCADE,blank=True, null=True)
+
+	class Meta:
+		ordering = ['-id']
+			

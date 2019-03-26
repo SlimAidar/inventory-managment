@@ -32,4 +32,36 @@ class CategoryCreateView(CreateView):
 	model = Category
 	fields = '__all__'
 	success_url = '/'
+
+
+class TransactionCreateView(CreateView):
+	model = Transaction
+	fields = ['quantity', 'Client']
+	success_url = '/'
+
+	def get_initial(self):
+		return {'item': self.kwargs['item_pk']}
+
+	def get_context_data(self, **kwargs):
+	    context = super(TransactionCreateView, self).get_context_data(**kwargs)
+	    context['item'] = Item.objects.get(id=self.kwargs['item_pk'])
+	    return context
+
+	def form_valid(self, form):
+		item = Item.objects.get(id=self.kwargs['item_pk'])
+		form.instance.item = item
+		tran_type = self.request.POST.get('tran_type')
+
+		if tran_type == 'in':
+			item.quantity += int(self.request.POST.get('quantity'))
+		else:
+			if item.quantity >= int(self.request.POST.get('quantity')):
+				item.quantity -= int(self.request.POST.get('quantity'))
+				form.instance.quantity *= -1
+			else:
+				form.add_error('quantity', "Quantity is grather than item's quantity")
+				return super(TransactionCreateView, self).form_invalid(form)
+		item.save()
+
+		return super(TransactionCreateView, self).form_valid(form)
 		
